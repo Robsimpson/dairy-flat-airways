@@ -1,0 +1,99 @@
+Dairy Flat Airport:
+
+Ah, Dairy Flat Airport, a delightful little aerodrome nestled amidst the bucolic charm of New Zealand's North Island. Like a pastoral painting sprung to life, it is a haven for aviators seeking respite from the bustling chaos of the larger airports. Located in the enchanting region of Dairy Flat, just a short distance from Auckland, it exudes a certain rustic charm that one can only find in the heart of the countryside. With its verdant surroundings and a tranquil ambiance, it offers a refreshing departure from the concrete jungles that dominate the world of aviation. As you soar above the lush farmland and gently touch down on its cozy runway, you can almost imagine yourself transported to a simpler, more idyllic era.
+
+Hobart Airport:
+
+Hobart Airport, a gateway to the stunning island of Tasmania, beckons travelers with its natural allure and a sense of adventure. Nestled at the foot of majestic Mount Wellington, this airport possesses a certain rugged charm that is quintessentially Tasmanian. As you disembark from your flight, you are greeted by crisp, clean air tinged with a hint of salty sea breeze, a reminder of the airport's proximity to the shimmering waters of the Derwent River. The airport's architecture reflects the spirit of Tasmania, blending seamlessly with the surrounding landscape and showcasing the region's rich cultural heritage. With its breathtaking vistas, welcoming atmosphere, and the promise of wilderness exploration just beyond its borders, Hobart Airport is a testament to the captivating beauty of Australia's southernmost state.
+
+Rotorua Airport:
+
+Ah, Rotorua Airport, a captivating gateway to the geothermal wonders of New Zealand's North Island. As you step off the plane, the air is filled with an unmistakable aroma, an earthy mixture of sulfur and mineral-rich waters that permeate the region. Nestled amidst a landscape dotted with bubbling mud pools and spouting geysers, this airport embodies the unique character of Rotorua, a place where nature's geological marvels coexist harmoniously with the vibrant Maori culture. Rotorua Airport's design pays homage to the area's volcanic heritage, with architectural elements inspired by Maori motifs and the undulating contours of the surrounding landscape. From here, your journey into a world of geothermal wonders and Maori traditions begins, leaving you with memories that will forever be etched in your heart.
+
+Claris Airport:
+
+Claris Airport, a hidden gem nestled on the picturesque Great Barrier Island of New Zealand. Located off the northeastern coast of Auckland, this charming airport offers a gateway to a tranquil paradise that feels worlds away from the hustle and bustle of city life. As you descend onto the island's only airport, you are greeted by breathtaking vistas of pristine beaches, lush forests, and a sense of untouched beauty that seems frozen in time. The airport itself, a modest yet welcoming structure, blends seamlessly with the island's unspoiled surroundings, reflecting the laid-back and unpretentious nature of its residents. From here, you embark on a journey of discovery, exploring the island's diverse flora and fauna, immersing yourself in its rich Maori history, and surrendering to the gentle rhythm of island life.
+
+Lake Tekapo Airport:
+
+Lake Tekapo Airport, a gateway to the ethereal beauty of New Zealand's South Island. Nestled in the heart of the Mackenzie Basin, this airport offers travelers a breathtaking introduction to the splendor of the Southern Alps and the azure depths of Lake Tekapo itself. As your plane descends, you are treated to a mesmerizing panorama of snow-capped peaks, the shimmering expanse of the lake, and the vibrant hues of lupins that adorn the landscape during the summer months. The airport's design reflects the serenity and harmony of its surroundings, blending seamlessly with the natural beauty that envelops it. From here, you embark on a journey of awe-inspiring landscapes, stargazing at the renowned Mt. John Observatory, and basking in the tranquility that Lake Tekapo so effortlessly bestows upon its visitors.
+
+Tuuta Airport:
+
+Ah, Tuuta Airport, a hidden jewel tucked away in the remote reaches of the world. This small, enigmatic airport carries an air of mystery and adventure, beckoning the intrepid traveler to embark on a journey of discovery. Tuuta is not your typical airport, far removed from the sprawling terminals and congested runways. No, it is a place of seclusion, nestled amidst untamed wilderness, where the boundaries between the human realm and the natural world seem to blur. As you touch down on the rugged runway, the wind whispers tales of ancient civilizations, and the scent of wild flora fills the air. This is a place where time slows down, where one can immerse themselves in the raw beauty of nature and find solace in its untamed embrace. Tuuta Airport, a portal to an untrodden realm, invites you to surrender to its allure and embrace the unknown.
+
+Syberjet SJ30i:
+
+The Syberjet SJ30i, a sleek and sophisticated marvel of aviation engineering that glides through the skies like a swan on a moonlit lake. This business jet, with its aerodynamic grace and cutting-edge technology, embodies the epitome of luxury and efficiency. It's a flying sanctuary, where comfort and style intertwine effortlessly, ensuring that passengers are pampered as they soar through the heavens. With its powerful engines and sleek design, the SJ30i is a true embodiment of the adage, "Traveling in style is not a luxury, but a necessity."
+
+Cirrus SF50:
+
+Ah, the Cirrus SF50, a veritable embodiment of the phrase, "Good things come in small packages." Don't be deceived by its compact size, for this mighty single-engine marvel packs a punch that belies its stature. It's a true pioneer in the realm of personal jets, combining innovation, versatility, and efficiency like a master chef concocting a delectable dish. With its cutting-edge avionics, spacious cabin, and panoramic windows that allow passengers to drink in the breathtaking vistas below, the SF50 proves that sometimes, the most extraordinary experiences come in the most compact forms.
+
+HondaJet Elite:
+
+The HondaJet Elite, a harmonious marriage of performance and elegance that glides through the skies with the precision of a perfectly composed symphony. From the moment you step inside its spacious and meticulously crafted cabin, you're enveloped in a sense of refined luxury. Every aspect of the HondaJet Elite exudes meticulous attention to detail, from its advanced aerodynamics that maximize efficiency to its state-of-the-art avionics that ensure a smooth and effortless journey. It's a testament to Honda's unwavering commitment to excellence, where engineering prowess and aesthetic beauty combine to create an aircraft that leaves its passengers with a symphony of awe and delight.
+
+Syberjet SJ30i:
+
+    Manufacturer: SyberJet Aircraft
+    Maximum Seating Capacity: 6 passengers
+    Range: 2,500 nautical miles
+    Maximum Cruise Speed: Mach 0.83 (486 knots)
+    Maximum Altitude: 49,000 feet
+    Takeoff Distance: 2,620 feet
+    Landing Distance: 2,205 feet
+    Engines: 2 x Honeywell TFE731-50R turbofans
+
+Cirrus SF50:
+
+    Manufacturer: Cirrus Aircraft
+    Maximum Seating Capacity: 5 passengers
+    Range: 1,200 nautical miles
+    Maximum Cruise Speed: 345 knots
+    Maximum Altitude: 31,000 feet
+    Takeoff Distance: 2,036 feet
+    Landing Distance: 2,135 feet
+    Engine: 1 x Williams International FJ33-5A turbofan
+
+HondaJet Elite:
+
+    Manufacturer: Honda Aircraft Company
+    Maximum Seating Capacity: 6 passengers
+    Range: 1,437 nautical miles
+    Maximum Cruise Speed: 422 knots
+    Maximum Altitude: 43,000 feet
+    Takeoff Distance: 3,120 feet
+    Landing Distance: 2,530 feet
+    Engines: 2 x GE Honda HF120 turbofans
+
+# NZNE = Airport(name="Dairy Flat", code="NZNE", location="Pacific/Auckland")
+# YHMB = Airport(name="Hobart", code="YHMB", location="Australia/Hobart")
+# NZRO = Airport(name="Rotorua", code="NZRO", location="Pacific/Auckland")
+# NZCI   = Airport(name="Claris", code="NZCI", location="Pacific/Auckland")
+# NZTL = Airport(name="Lake Tekapo", code="NZTL", location="Pacific/Auckland")
+# NZTU = Airport(name="Tuuta", code="NZTU", location="Pacific/Auckland")
+
+Dairy Flat Airport:
+Latitude: -36.666389
+Longitude: 174.665556
+
+Hobart Airport:
+Latitude: -42.836111
+Longitude: 147.510278
+
+Rotorua Airport:
+Latitude: -38.109722
+Longitude: 176.317222
+
+Claris Airport:
+Latitude: -36.259722
+Longitude: 175.468889
+
+Lake Tekapo Airport:
+Latitude: -44.004444
+Longitude: 170.460556
+
+Tuuta Airport:
+Latitude: -43.8975
+Longitude: -176.413056
