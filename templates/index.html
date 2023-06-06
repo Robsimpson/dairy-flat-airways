@@ -1,42 +1,53 @@
-<!-- index.html -->
 {%  extends 'base.html' %}
+{% load static %}
+<!-- index.html -->
 
 {% block content %}
 
- <section class = "floating-box-container">
+ <section class = "carousel-background">
+<div id="index-carousel" class="carousel-container">
 
-    <div id="booking-box" class="floating-box carousel">
-        <h3>Find a Flight</h3>
-        <span class="material-symbols-outlined expand-button">expand_content</span>
-
-
+    <div id="schedule-box" class="floating-box carousel-card">
+        <span class="material-symbols-outlined carousel-control-left">navigate_before</span>
+            <div class="carousel-card-content">
+                <h3>Upcoming Schedule</h3>
+                <div id="upcoming_schedule_display"></div>
+            </div>
+        <span class="material-symbols-outlined carousel-control-right">navigate_next</span>
     </div>
-     <div id="booking-box" class="floating-box carousel">
-         <h3>Upcoming Schedule</h3>
-         <span class="material-symbols-outlined expand-button">expand_content</span>
 
+
+    <div id="booking-box" class="floating-box carousel-card carousel-default">
+        <span class="material-symbols-outlined carousel-control-left">navigate_before</span>
+        <div class="carousel-card-content">
+            <h3>Find a Flight</h3>
+        </div>
+        <span class="material-symbols-outlined carousel-control-right">navigate_next</span>
+    </div>
+
+
+     <div id="flight-status-box" class="floating-box carousel-card">
+         <span class="material-symbols-outlined carousel-control-left">navigate_before</span>
+         <div class="carousel-card-content">
+             <h3>Current Aircraft Positions</h3>
+         </div>
+         <span class="material-symbols-outlined carousel-control-right">navigate_next</span>
 
      </div>
-     <div id="flight-status-box" class="floating-box carousel">
-        <h3>Current Aircraft Positions</h3>
-         <span class="material-symbols-outlined expand-button">expand_content</span>
+</div>
 
-
-    </div>
  </section>
 
 <section>
 
-Ah, Dairy Flat Airways, a whimsical marvel in the countryside.
-    Picture a petite runway, framed by fields and curious cows.
-    Its spirited pilots defy gravity with charm, their propellers humming a harmonious tune.
-    Above, behold the splendor of Dairy Flat, a patchwork quilt of nature's wonders.
-    Embrace the joy, wonder, and freedom of this enchanting escape.
+
+    Picture a petite runway, framed by fields and curious cows, and you have the home of Dairy Flat Airways.
+    Its spirited pilots defy gravity with charm, their jets humming a harmonious tune.
     Soar above the ordinary, dance with the sky, and discover the beauty of Dairy Flat Airways.
 
 </section>
 
-
+<script src=" {% static 'dairy_flat_airways/scripts/async_content_updates.js' %}"></script>
 
 {% endblock %}
 

@@ -29,6 +29,6 @@ def get_scheduled_flights(start_date=datetime.now(), end_date=None, origin=None,
 
     scheduled_flights = Flight.objects.filter(filters).order_by('etd_origin')
     if limit:
-        scheduled_flights = scheduled_flights[:limit]
+        scheduled_flights = scheduled_flights[:int(limit)]
 
     return scheduled_flights

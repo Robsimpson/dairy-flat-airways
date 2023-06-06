@@ -3,6 +3,7 @@ import json
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from django.db import models
+from django.utils import timezone
 from enum import Enum
 from enumfields import EnumField
 
