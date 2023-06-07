@@ -2,9 +2,9 @@ let flights;
 
 document.addEventListener('DOMContentLoaded', function fill_upcoming_schedule() {
     let schedule = document.getElementById("upcoming_schedule_display");
-    let schedule_html = "<table><tr><th>Flight Number</th><th>Plane</th><th>Route</th><th>Status</th></tr>";
+    let schedule_html = "<table><tr><th>Flight</th><th>Plane</th><th>Route</th><th>Status</th></tr>";
 
-    fetch("/dfairways/get_scheduled_flight_json/?limit=8")
+    fetch("/dfairways/get_scheduled_flight_json/?limit=8&status=Scheduled,Delayed,Go%20to%20gate,Boarded)")
         .then(response => response.json())
         .then(function (data) {
 
@@ -40,9 +40,11 @@ function construct_table_row(flight) {
     row += "<td>" + flight.plane + "</td>";
     for (let i = 0; i < flight.route_details.length; i++) {
         let temp_date =  new Date(flight.route_details[i][1]*1000);
-        route_details_string += "Origin: " + flight.route_details[i][0] + ": " + formatter.format(temp_date) + "<BR>";
+        let origin_word = i > 0 ? "Depart: " : "Origin: ";
+        let dest_word = i < flight.route_details.length-1  ? "Pickup: " : "Dest: ";
+        route_details_string += origin_word + flight.route_details[i][0] + ": " + formatter.format(temp_date) + "<BR>";
         temp_date = new Date(flight.route_details[i][3]*1000);
-        route_details_string += "Dest: " + flight.route_details[i][2] + ": " + formatter.format(temp_date) + " ";
+        route_details_string += dest_word + flight.route_details[i][2] + ": " + formatter.format(temp_date) + " ";
 
     }
     row += "<td>" + route_details_string + "</td>";

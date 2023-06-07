@@ -21,6 +21,11 @@
         <span class="material-symbols-outlined carousel-control-left">navigate_before</span>
         <div class="carousel-card-content">
             <h3>Find a Flight</h3>
+            <form method="post"><table>
+                {% csrf_token %}
+                {{  form.as_table }}
+            </table></form>
+            <button type="submit">Search</button>
         </div>
         <span class="material-symbols-outlined carousel-control-right">navigate_next</span>
     </div>

@@ -69,7 +69,7 @@ main {
     display: flex;
     flex-direction: column;
     width:100%;
-    height: 600px;
+    min-height: 600px;
     z-index: 5;
 }
 
@@ -84,7 +84,8 @@ section {
     padding: 5px;
     margin: 0;
     width: 100%;
-    height: 600px;
+    min-height: 650px;
+    max-height:80%;
     background-image: url('../images/dfa_banner3.jpg');
     background-size: cover;
     background-position: center center;
@@ -105,7 +106,7 @@ section {
     max-width: 80%;
     min-width: 800px;
     max-height: 80%;
-    min-height: 500px;
+    min-height: 550px;
     margin:2em;
     display: flex;
     flex-direction: row;
@@ -140,8 +141,79 @@ section {
 
 }
 
-.carousel-card-content {
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
 
+#booking-box table{
+    width: 100%;
+    height: 100%;
+    margin-top:5px;
+}
+
+#booking-box tr {
+    margin: 5px;
+}
+
+#booking-box th {
+    color: var(--impact-background);
+    padding: 1px;
+    text-align: right;
+}
+
+#booking-box td {
+    padding: 3px;
+}
+
+#booking-box button {
+
+    font-family: 'Lobster', sans-serif;
+    width: 50%;
+    height: 50px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    border: var(--heading) 2px solid;
+    background-color: var(--heading);
+    box-shadow: var(--paragraph) 1px 1px 1px 0px;
+}
+
+form label {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 2px;
+}
+
+form input,select {
+    height: 40px;
+    width: 80%;
+    margin: 2px;
+    padding: 2px;
+    font-size: 1.2em;
+    border: var(--heading) 2px solid;
+    background-color: var(--background);
+    box-shadow: var(--paragraph) 1px 1px 1px 0px;
+}
+
+.carousel-card-content {
+    width: 100%;
+    height: 100%;
+    padding: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.carousel-card-content h3 {
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    padding-top:3px;
 }
 
 .logo_header {
@@ -153,6 +225,28 @@ section {
 
 }
 
+#schedule-box table {
+    margin-top: 3px;
+    height: 100%;
+    background-color: var(--background);
+    border: var(--secondary) 2px solid;
+    padding: 1px;
+}
+
+#schedule-box th {
+    background-color: var(--secondary);
+    color: var(--impact-background);
+    padding: 1px;
+}
+
+#schedule-box td {
+    padding: 4px 4px;
+    font-family: "Source Code Pro", monospace;
+    font-size: 0.95em;
+    background-color: var(--paragraph);
+    color: var(--heading);
+}
+
 footer {
     width: 100%;
     background-color: var(--paragraph);
@@ -160,3 +254,4 @@ footer {
     box-shadow: 0 0 25px 3px var(--paragraph) ;
     z-index: 10;
 }
+

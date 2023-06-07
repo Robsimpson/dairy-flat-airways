@@ -23,25 +23,25 @@ class ScheduleType(Enum):
 
 
 class FlightStatus(Enum):
-    SCHEDULED = 0
-    GO_TO_GATE = 1
-    BOARDED = 2
-    IN_FLIGHT = 3
-    COMPLETED = 4
-    CANCELLED = 5
-    DELAYED = 6
-    DIVERTED = 7
-    UNKNOWN = 8
-    ATLAYOVER = 9
+    SCHEDULED = 'Scheduled'
+    GO_TO_GATE = 'Go To Gate'
+    BOARDED = 'Boarded'
+    IN_FLIGHT = 'In Flight'
+    COMPLETED = 'Completed'
+    CANCELLED = 'Cancelled'
+    DELAYED = 'Delayed'
+    DIVERTED = 'Diverted'
+    UNKNOWN = 'Unknown'
+    ATLAYOVER = 'At Layover'
 
 
 class TicketStatus(Enum):
-    SCHEDULED = 0
-    IN_FLIGHT = 1
-    COMPLETED = 2
-    CANCELLED = 3
-    TRANSFERRED = 4
-    UNKNOWN = 5
+    SCHEDULED = 'Scheduled'
+    IN_FLIGHT = 'In Flight'
+    COMPLETED = 'Completed'
+    CANCELLED = 'Cancelled'
+    TRANSFERRED = 'Transfer'
+    UNKNOWN = 'Unknown'
 
 
 # Users (are users, can buy tickets)
@@ -170,6 +170,9 @@ class Airport(models.Model):
 
     def name_and_code(self):
         return self.name + " (" + self.id + ")"
+
+    def __str__(self):
+        return self.name
 
 
 # Routes define a flight path
