@@ -53,3 +53,25 @@ function construct_table_row(flight) {
     console.log(row);
     return row;
 }
+
+document.addEventListener('DOMContentLoaded', function manipulateFormChoices() {
+
+    let origin_selector = document.getElementById("id_origin");
+    let destination_selector = document.getElementById("id_destination");
+
+    origin_selector.addEventListener('change', function () {
+
+        let selected = origin_selector.options[origin_selector.selectedIndex].value;
+        let destination_options = destination_selector.options;
+        for (let i = 0; i < destination_options.length; i++) {
+            if (destination_options[i].value === selected && destination_options[i].value !== "Surprise Me!") {
+                destination_options[i].disabled = true;
+                destination_options.selectedIndex = 0;
+            } else {
+                destination_options[i].disabled = false;
+            }
+
+
+        }});
+
+});

@@ -13,7 +13,7 @@ class SearchFlightsForm(forms.Form):
     departure_date = forms.DateTimeField(label="Leave By", initial=datetime.now(), required=False, widget=DateTimeInput(attrs={'type': 'datetime-local'}))
     return_date = forms.DateTimeField(label="Return By", required=False, widget=DateTimeInput(attrs={'type': 'datetime-local'}))
     number_of_passengers = forms.IntegerField(label="Passengers", min_value=1, max_value=10,
-                                              required=True)
+                                              required=True, initial=1)
     return_required = forms.BooleanField(label="Return", required=False)
 
     def __init__(self, *args, **kwargs):

@@ -146,7 +146,7 @@ form {
     width: 100%;
     flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
 }
 
 #booking-box table{
@@ -167,6 +167,10 @@ form {
 
 #booking-box td {
     padding: 3px;
+}
+
+#booking-box select option:disabled {
+    display: none;
 }
 
 #booking-box button {

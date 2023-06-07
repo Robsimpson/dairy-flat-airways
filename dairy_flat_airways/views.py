@@ -79,6 +79,11 @@ def search_scheduled_flights(request):
             number_of_passengers = form.cleaned_data['number_of_passengers']
             return_required = form.cleaned_data['return_required']
 
+            if origin == 'Surprise Me!':
+                origin = None
+            if destination == 'Surprise Me!':
+                destination = None
+
             # get the flights
             scheduled_flights = get_scheduled_flights(start_date=departure_date, origin=origin, destination=destination)
 
