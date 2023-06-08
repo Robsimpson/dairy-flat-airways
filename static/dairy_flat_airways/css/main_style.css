@@ -141,7 +141,14 @@ section {
 
 }
 
-form {
+#flight-position-map {
+    width: 95%;
+    height: 85%;
+    opacity: 1;
+    margin-bottom: 5px;
+}
+
+#booking-box form {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -229,6 +236,8 @@ form input,select {
 
 }
 
+/* Schedule Box Display CSS */
+
 #schedule-box table {
     margin-top: 3px;
     height: 100%;
@@ -250,6 +259,9 @@ form input,select {
     background-color: var(--paragraph);
     color: var(--heading);
 }
+
+
+/*Page Footer and Related CSS*/
 
 footer {
     width: 100%;

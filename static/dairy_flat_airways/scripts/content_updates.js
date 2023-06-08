@@ -50,7 +50,6 @@ function construct_table_row(flight) {
     row += "<td>" + route_details_string + "</td>";
     row += "<td>" + flight.status + "</td>";
     row += "</tr>";
-    console.log(row);
     return row;
 }
 
@@ -75,3 +74,4 @@ document.addEventListener('DOMContentLoaded', function manipulateFormChoices() {
         }});
 
 });
+

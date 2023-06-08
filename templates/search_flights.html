@@ -1,0 +1,29 @@
+{%  extends 'base.html' %}
+{% load static %}
+<!-- index.html -->
+{% block content %}
+<div class="searchbar">
+      <form method="post" action="/dfairways/search_scheduled_flights/">
+            {% csrf_token %}
+            {{  form.as_p }}
+      <button type="submit">Search</button></form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

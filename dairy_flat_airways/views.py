@@ -1,20 +1,21 @@
+import json
+
 from django.core import serializers
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from utilities.simulation import update_flight_status
-from utilities.scheduling import get_scheduled_flights
+from utilities.simulation import update_flight_status, where_are_my_planes
+from utilities.scheduling import get_scheduled_flights, get_segments
 import urllib.parse
 
 from zoneinfo import ZoneInfo
 
 # Create your views here.
-from .models import Schedule, FlightStatus
+from .models import Schedule, FlightStatus, Airport, Route, RouteLeg
 
 from .forms import SearchFlightsForm
 
 
 def index(request):
-
     search_flights_form = SearchFlightsForm()
 
     context = {
@@ -81,14 +82,55 @@ def search_scheduled_flights(request):
 
             if origin == 'Surprise Me!':
                 origin = None
+            else:
+                origin = Airport.objects.get(pk=origin)
+
             if destination == 'Surprise Me!':
                 destination = None
+            else:
+                destination = Airport.objects.get(pk=destination)
 
-            # get the flights
+            # calculate the segments required to get between complex routes
+            # if none is passed in don't attempt multiple segments, and NZNE cannot by definition have multiple segments
+            # as it is the hub, however I will just return a single segment back for that so the
+            # function behaviour is general
+
+            if origin is not None and destination is not None:
+                segments = get_segments(origin, destination)
+
             scheduled_flights = get_scheduled_flights(start_date=departure_date, origin=origin, destination=destination)
 
+            search_flights_form = SearchFlightsForm()
+
+            context = {
+                'form': search_flights_form,
+                'scheduled_flights': scheduled_flights
+            }
             # return the flights
-            return render(request, 'search_flights.html', {'scheduled_flights': scheduled_flights})
+            return render(request, 'search_flights.html', context)
 
         else:
             pass
+
+
+def get_airport_json(request):
+    airports = Airport.objects.all()
+    json_return = serializers.serialize('json', airports)
+    return HttpResponse(json_return, content_type='application/json')
+
+
+def get_active_schedule_json(request):
+    route_legs = RouteLeg.objects.filter(route_id__schedule__enabled=True)
+    json_return = serializers.serialize('json', route_legs)
+    return HttpResponse(json_return, content_type='application/json')
+
+
+def get_aircraft_locations(request):
+    plane_locations = where_are_my_planes()
+    json_return = json.dumps(plane_locations)
+    return HttpResponse(json_return, content_type='application/json')
+
+
+def trigger_update_flight_status(request):
+    update_flight_status()
+    return HttpResponse('Flight status updated')
