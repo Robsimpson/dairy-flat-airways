@@ -25,10 +25,17 @@ document.addEventListener('DOMContentLoaded', function init_map() {
 function fill_map() {
 
     map.on('style.load', function () {
+        map.loadImage('/static/dairy_flat_airways/images/flight.png', function (error, image) {
+            if (error) throw error;
+            map.addImage('flight', image);
+
+        });
+
         draw_airports();
         draw_lines().then(r => console.log("done - lines"));
         draw_flights().then(r => console.log("done - flights"));
     });
+
 }
 
 function poor_mans_spin_lock() {
@@ -123,9 +130,17 @@ async function draw_flights() {
                 console.log(plane_tail)
 
                 for (let i = 0; i< plane_tail.length; i++) {
+                    if (map.getSource('plane'+i) ===null) {
+                        map.removeSource('plane'+i);
+                    }
+                    if (map.getSource('flight_line'+i) ===null) {
+                        map.removeSource('flight_line' + i);
+                    }
                     let plane = plane_tail[i];
                     let flight = data[plane];
                     console.log(flight);
+                    let flight_position;
+                    let bearing = 0;
                     if (flight.progress < 1) {
                         console.log('drawing flight ' + flight.origin + ' to ' + flight.destination + ' at ' + flight.progress)
                         //only add the flight line if it is in progress
@@ -133,8 +148,8 @@ async function draw_flights() {
                         let end_point = turf.point(airport_coords[flight.destination]);
                         let curved_line = turf.greatCircle(start_point, end_point, {properties: {name: plane}});
                         let kms_prog = turf.length(curved_line, {units: 'kilometers'}) * flight.progress;
-                        let flight_position = turf.along(curved_line, kms_prog, {units: 'kilometers'});
-
+                        flight_position = turf.along(curved_line, kms_prog, {units: 'kilometers'});
+                        bearing = turf.bearing(start_point, end_point)+10;
                         let progress_line = turf.greatCircle(start_point,flight_position, {properties: {name: plane}});
 
                         // draw the inflight segment in red
@@ -148,15 +163,30 @@ async function draw_flights() {
                             'source': 'flight_line' + i,
                             'paint': {
                                 'line-color': '#C41E3A',
-                                'line-width': 3
+                                'line-width': 3,
+
                             }
                         })
 
                     } else {
-                        let flight_position = turf.point(airport_coords[flight.destination]);
+                        flight_position = turf.point(airport_coords[flight.destination]);
                     }
+
                     // and we always add the plane symbol
-                    let marker = new mapboxgl.Marker();
+                    map.addSource('plane'+i, {
+                        type: 'geojson',
+                        data: flight_position
+                    });
+                    map.addLayer({
+                        'id': 'plane'+i,
+                        'type': 'symbol',
+                        'source': 'plane'+i,
+                        'layout': {
+                            'icon-image': 'flight',
+                            'icon-size': 0.5,
+                            'icon-rotate': turf.bearingToAzimuth(bearing),
+                        }
+                    });
                 }
 
             })
