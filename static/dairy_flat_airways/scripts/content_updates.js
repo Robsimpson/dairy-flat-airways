@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function fill_upcoming_schedule() 
     let schedule = document.getElementById("upcoming_schedule_display");
     let schedule_html = "<table><tr><th>Flight</th><th>Plane</th><th>Route</th><th>Status</th></tr>";
 
-    fetch("/dfairways/get_scheduled_flight_json/?limit=8&status=Scheduled,Delayed,Go%20to%20gate,Boarded)")
+    fetch("/dfairways/get_scheduled_flight_json/?limit=8&status=Scheduled,Delayed)")
         .then(response => response.json())
         .then(function (data) {
 

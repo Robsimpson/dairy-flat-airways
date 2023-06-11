@@ -10,5 +10,6 @@ urlpatterns = [
     path('get_active_schedule_json/', views.get_active_schedule_json, name='get_active_schedule_json'),
     path('get_aircraft_locations/', views.get_aircraft_locations, name='get_active_schedule_json'),
     path('trigger_update_flight_status/', views.trigger_update_flight_status, name='trigger_update_flight_status'),
+    path('book_flights/', views.book_flights, name='book_flights'),
 ]
 

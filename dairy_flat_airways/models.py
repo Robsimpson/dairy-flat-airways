@@ -36,6 +36,7 @@ class FlightStatus(Enum):
 
 
 class TicketStatus(Enum):
+    DRAFT = 'Draft'
     SCHEDULED = 'Scheduled'
     IN_FLIGHT = 'In Flight'
     COMPLETED = 'Completed'
@@ -195,6 +196,10 @@ class RouteLeg(models.Model):
     origin = models.ForeignKey(Airport, on_delete=models.PROTECT, related_name='origin_airport')
     destination = models.ForeignKey(Airport, on_delete=models.PROTECT, related_name='destination_airport')
     distance = models.FloatField()
+    price = models.IntegerField(null=True)
+
+    def price_route(self):
+        self.price = max(round(self.distance * 0.25) - 1, 79)
 
 
 # Schedules are used as a factory to create flights in the future schedule
@@ -258,8 +263,11 @@ class Ticket(models.Model):
     YOUR_ENUM_CHOICES = [(tag, tag.value) for tag in FlightStatus]
 
     id = models.AutoField(primary_key=True)
-    passenger = models.ForeignKey(Users, on_delete=models.PROTECT)
-    flight = models.ForeignKey(Flight, on_delete=models.PROTECT)
+    email = models.CharField(max_length=254)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    passengers = models.IntegerField()
+    legs = models.CharField(max_length=30)
     seat = models.CharField(max_length=30)
     price = models.IntegerField()
-    status = EnumField(TicketStatus, default=TicketStatus.SCHEDULED)
+    status = EnumField(TicketStatus, default=TicketStatus.DRAFT)

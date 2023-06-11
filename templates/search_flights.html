@@ -1,5 +1,7 @@
 {%  extends 'base.html' %}
 {% load static %}
+{% load custom_tags %}
+
 <!-- index.html -->
 {% block content %}
 <div class="searchbar">
@@ -9,20 +11,148 @@
       <button type="submit">Search</button></form>
 </div>
 
+<div class="fullwidth-flex">
+    <button id="bookFlights" type="button" onclick="bookTheseFlights({{ number_of_passengers}})" disabled><h3>Select valid legs</h3></button>
+</div>
+<section class="flight-choice">
+
+<h3>Outbound Flight Choice</h3>
+    <p><strong>You must select legs for:</strong></p>
+    <ul id="outbound-must-choose">
+        {% for segment in outbound_segments %}
+            {%  for item in segment %}
+                <li data-origin="{{ item.0|get_airport_code}}" data-dest="{{ item.1|get_airport_code }}">{{ item.0 }} -> {{ item.1 }}</li>
+            {%  endfor %}
+        {% endfor %}
+    </ul>
+
+    <div class="flight-choice-table">
+    <table>
+
+
+
+    <tr>
+        <th>No.</th>
+        <th>Plane</th>
+        <th>Status</th>
+        <th>Route Details</th>
+        <th>Price</th>
+        <th>Select Leg</th>
+    </tr>
+
+    {% for flight in scheduled_outbound %}
+
+    <tr>
+        <td>{{ flight.flight_number }}</td>
+        <td>{{ flight.plane.tail_number }}</td>
+        <td>{{ flight.status.value }}</td>
+        <td>
+        {%  for leg in flight.route_details %}
+                <p>{{ leg.0 }} - {{ leg.1|get_datetime }} -> {{ leg.2 }} - {{ leg.3|get_datetime }}</p>
+
+        {%  endfor %}
+        </td>
+            <td><div id="{{ flight.id }}-price" class="flight-choice-cell price-box">
+
+
+    {% for routeleg in flight.route.routeleg_set.all %}
+        {% with price=routeleg|price_leg %}
+             <p data-price="{{ price }}">${{ price }}</p>
+
+        {% endwith %}
+    {% endfor %}
+
+            </div></td>
+        <td>
+        <div class="flight-choice-cell">
+        {%  with i=0 %}
+            {% for leg in flight.route_details %}
+                <label> Select
+                      <input type="checkbox" name="outbound_flight" value="{{ flight.id }}|{{ i}}|{{ leg.0 }}|{{ leg.1|get_datetime }}|{{ leg.2 }}|{{ leg.3|get_datetime }}">
+                </label>
+                {%  with i=i|add:1 %}{% endwith %}
+            {% endfor %}
+        {%  endwith %}
+        </div>
+        </td>
+
+    </tr>
 
 
 
 
+    {%  endfor %}
 
 
+</table>
+    </div>
+</section>
+
+    <section class="flight-choice">
+
+    {%  if return_checked %}
+        <h3>Return Flight Choice</h3>
+        <p><strong>You must select legs for:</strong></p>
+<ul>
+        {% for segment in return_segments %}
+            {%  for item in segment %}
+                <li data-origin="{{ item.0|get_airport_code}}" data-dest="{{ item.1|get_airport_code }}">{{ item.0 }} -> {{ item.1 }}</li>
+            {%  endfor %}
+        {% endfor %}
+    </ul>
+
+    <div class="flight-choice-table">
+    <table>
+
+    <tr>
+        <th>No.</th>
+        <th>Plane</th>
+        <th>Status</th>
+        <th>Route Details</th>
+        <th>Price</th>
+        <th>Select Leg</th>
+    </tr>
+
+    {% for flight in scheduled_return %}
+
+    <tr>
+        <td>{{ flight.flight_number }}</td>
+        <td>{{ flight.plane.tail_number }}</td>
+        <td>{{ flight.status.value }}</td>
+        <td>
+        {%  for leg in flight.route_details %}
+                <p>{{ leg.0 }} - {{ leg.1|get_datetime }} -> {{ leg.2 }} - {{ leg.3|get_datetime }}</p>
+
+        {%  endfor %}
+        </td>
+     <td><div id="{{ flight.id }}-price"  class="flight-choice-cell price-box">
+    {% for routeleg in flight.route.routeleg_set.all %}
+        {% with price=routeleg|price_leg %}
+            <p data-price="{{ price }}">${{ price }}</p>
+
+        {% endwith %}
+    {% endfor %}
+            </div></td>
+        <td>
+        <div class="flight-choice-cell">
+            {%  with i=0 %}
+            {% for leg in flight.route_details %}
+                <label> Select
+                    <input type="checkbox" name="return_flight" value="{{ flight.id }}|{{ i}}|{{ leg.0 }}|{{ leg.1|get_datetime }}|{{ leg.2 }}|{{ leg.3|get_datetime }}">
+                </label>
+                {%  with i=i|add:1 %}{% endwith %}
+            {% endfor %}
+            {%  endwith %}
+        </div>
+        </td>
+
+    </tr>
+{%  endfor %}
 
 
-
-
-
-
-
-
+</table>
+    </div>
+    {%  endif %}
 
 
 

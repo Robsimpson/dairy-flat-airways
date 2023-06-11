@@ -41,11 +41,13 @@ body {
     width: 100%;
     height: available;
     background-color: var(--background);
+    align-items: center;
 }
 
 
 header {
     display: flex;
+    position: sticky;
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
@@ -78,8 +80,23 @@ section {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    height: 100%;
 
 }
+
+.text-content {
+    width: 100%;
+    padding: 10px;
+    display: block;
+}
+
+.text-content h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+
 .carousel-background {
     padding: 5px;
     margin: 0;
@@ -180,6 +197,70 @@ section {
     display: none;
 }
 
+.searchbar form {
+    display: flex;
+    flex-direction: row;
+}
+
+.flight-choice-table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    max-height:400px;
+    width: 100%;
+    overflow: auto;
+}
+
+.flight-choice {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.flight-choice h3 {
+    margin-top: 5px;
+}
+
+.flight-choice table {
+    box-sizing: border-box;
+    width: 80%;
+    margin-top:5px;
+    overflow-y: scroll;
+}
+
+.flight-choice tr {
+    margin: 5px;
+}
+
+.flight-choice tr th {
+    color: var(--impact-background);
+    background-color: var(--paragraph);
+    padding: 1px;
+    text-align: center;
+}
+
+.flight-choice tr td {
+    padding: 3px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--impact-background);
+}
+
+.flight-choice-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.flight-choice td p, input {
+    padding: 1px;
+}
 #booking-box button {
 
     font-family: 'Lobster', sans-serif;
@@ -193,13 +274,22 @@ section {
     box-shadow: var(--paragraph) 1px 1px 1px 0px;
 }
 
-form label {
+#booking-box button:hover {
+    background-color: var(--secondary);
+}
+
+#booking-box button:active {
+    background-color: var(--secondary);
+    box-shadow: var(--paragraph) 1px 1px 1px 0px inset;
+}
+
+.carousel-card-content form label {
     font-size: 1.5em;
     font-weight: bold;
     margin: 2px;
 }
 
-form input,select {
+.carousel-card-content form input, select {
     height: 40px;
     width: 80%;
     margin: 2px;
@@ -209,6 +299,30 @@ form input,select {
     background-color: var(--background);
     box-shadow: var(--paragraph) 1px 1px 1px 0px;
 }
+
+.searchbar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--heading);
+    padding: 5px 0px;
+}
+
+.searchbar form input, select {
+    height: 30px;
+    background-color: var(--impact-background);
+    margin: 0 1px;
+
+}
+
+.searchbar button {
+    background-color: var(--impact-background);
+    width: 60px;
+}
+
 
 .carousel-card-content {
     width: 100%;
@@ -260,6 +374,42 @@ form input,select {
     color: var(--heading);
 }
 
+.user-choices-for-ticket {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    min-height:100px;
+    border-radius: 5px;
+    box-shadow: var(--paragraph) 1px 1px 1px 0px;
+    background-color: var(--impact-background);
+    margin: 10px 5%;
+}
+
+.leg-selected {
+    color: var(--highlight);
+    font-weight: bold;
+}
+
+#bookFlights {
+    width: 50%;
+    height: 50px;
+    background-color: var(--highlight);
+    margin: 10px;
+}
+
+#bookFlights:disabled {
+    background-color: var(--secondary);
+}
+
+.fullwidth-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 
 /*Page Footer and Related CSS*/
 

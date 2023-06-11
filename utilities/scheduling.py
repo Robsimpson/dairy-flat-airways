@@ -7,7 +7,7 @@ from django.db.models import Q
 # is passed as a tuple, as they are not mutable - this stopped intelliJ screaming at me in yellow highlights..
 
 def get_scheduled_flights(start_date=datetime.now(), end_date=None, origin=None, destination=None,
-                          status_inclusions=None, limit=None):
+                          status_inclusions=None, limit=None, excluded_full_flights=False):
     # get all the flights within the provided parameters and return as a list, for any specified as none
     # ignore the filter. The filter is dynamically built. The business rule is that flights can be purchased
     # right up until the point they 'Go to gate' (half an hour prior to flight). Passport control is pretty
@@ -21,11 +21,13 @@ def get_scheduled_flights(start_date=datetime.now(), end_date=None, origin=None,
     if end_date is not None:
         filters &= Q(etd_origin__lte=end_date)
     if origin is not None:
-        filters &= Q(origin=origin)
+        filters &= Q(route__routeleg__origin=origin)
     if destination is not None:
-        filters &= Q(destination=destination)
+        filters &= Q(route__routeleg__destination=destination)
     if status_inclusions is not None:
         filters &= Q(status__in=status_inclusions)
+    # if excluded_full_flights:
+    #     filters &= Q(status__not_in=[FlightStatus.FULL])
 
     scheduled_flights = Flight.objects.filter(filters).order_by('etd_origin')
     if limit:
