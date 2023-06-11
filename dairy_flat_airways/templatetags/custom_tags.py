@@ -29,3 +29,8 @@ def price_leg(flightleg):
 @register.filter
 def get_airport_code(airport_name):
     return Airport.objects.get(name=airport_name).id
+
+
+@register.filter
+def to_list(num):
+    return range(1, num)

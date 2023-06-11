@@ -1,7 +1,85 @@
 {%  extends 'base.html' %}
+{% load custom_tags %}
+
+{%  load static %}
 
 {%  block content %}
 
-    <p> this should surely work </p>
+    <h1>Your Itinerary</h1>
+
+    {%  if outbound_flight|get_length > 0  %}
+        <table>
+            <h3>Outbound:</h3>
+        <tr>
+            <th>Flight</th>
+            <th>Plane</th>
+            <th>Origin</th>
+            <th>ETD</th>
+            <th>Destination</th>
+            <th>ETA</th>
+            <th>Price</th>
+        </tr>
+            {% for out in outbound_flight %}
+                <tr>
+                    <td>{{ out.0.flight_number }}</td>
+                    <td>{{ out.0.plane.tail_number }}</td>
+                    <td>{{ out.0.route_details.0.0 }}</td>
+                    <td>{{ out.0.route_details.0.1|get_datetime }}</td>
+                    <td>{{ out.0.route_details.0.2 }}</td>
+                    <td>{{ out.0.route_details.0.3|get_datetime }}</td>
+                    <td>${{ out.2 }}</td>
+                </tr>
+
+            {% endfor %}
+
+        </table>
+
+    {%  endif %}
+
+       {%  if return_flight|get_length > 0  %}
+        <table>
+            <h3>Return:</h3>
+        <tr>
+            <th>Flight</th>
+            <th>Plane</th>
+            <th>Origin</th>
+            <th>ETD</th>
+            <th>Destination</th>
+            <th>ETA</th>
+            <th>Price</th>
+        </tr>
+            {% for ret in return_flight %}
+                <tr>
+                    <td>{{ ret.0.flight_number }}</td>
+                    <td>{{ ret.0.plane.tail_number }}</td>
+                    <td>{{ ret.0.route_details.0.0 }}</td>
+                    <td>{{ ret.0.route_details.0.1|get_datetime }}</td>
+                    <td>{{ ret.0.route_details.0.2 }}</td>
+                    <td>{{ ret.0.route_details.0.3|get_datetime }}</td>
+                    <td>${{ ret.2 }}</td>
+                </tr>
+
+            {% endfor %}
+
+
+        </table>
+
+    {%  endif %}
+
+    <h3>Select a head passenger for your {{ passengers }} ticket booking:</h3>
+    <h5>Primary Passenger</h5>
+    <form>
+    <label>First Name:
+        <input id = "primary_name" name="primary_name" type="text" placeholder="Name">
+    </label>
+    <label>Last Name:
+        <input id="primary_surname" name="primary_surname" type="text" placeholder="Surname">
+    </label>
+    <label>Email:
+        <input  id="primary_email"  name="primary_email" type="text" placeholder="Email">
+    </label>
+
+    <button id="confirm_booking" type="button" onclick="createBookings()">Confirm Booking</button>
+    </form>
 
 {%  endblock %}

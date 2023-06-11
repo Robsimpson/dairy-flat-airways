@@ -42,7 +42,6 @@ class SearchFlightsForm(forms.Form):
             self.fields['destination'].choices = valid_airports
 
 
-class UserDetailsForm(forms.Form):
-    email = forms.EmailField(label="Email", required=True)
-    first_name = forms.CharField(label="First Name", required=True)
-    last_name = forms.CharField(label="Last Name", required=True)
+
+
+

@@ -267,6 +267,7 @@ class Ticket(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     passengers = models.IntegerField()
+    flight_number = models.ForeignKey(Flight, on_delete=models.PROTECT)
     legs = models.CharField(max_length=30)
     seat = models.CharField(max_length=30)
     price = models.IntegerField()

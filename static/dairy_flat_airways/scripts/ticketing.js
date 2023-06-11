@@ -193,7 +193,7 @@ function bookTheseFlights(passengers) {
                 "direction": checkboxes[i].getAttribute('name'),
                 "flight": details[0],
                 "leg": details[1],
-                "price": document.getElementById(details[0] + '-price').children[details[1]].innerHTML,
+                "price": parseInt(document.getElementById(details[0] + '-price').children[details[1]].innerHTML.replace(/\$/g,'')),
                 "passengers": passengers,
 
             }
@@ -210,9 +210,16 @@ function bookTheseFlights(passengers) {
     fetch('/dfairways/book_flights/', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrftoken
-        }, body: json_booking
+            'X-CSRFToken': csrftoken,
+            'content-type': 'application/json'
+        }, body: json_booking,
+    }).then(response => {
+        return response.text();
+    }).then(html => {
+        document.open();
+        document.write(html);
+        document.close();
+        window.history.pushState(null, null, '/dfairways/book_flights/');
     }).catch(function (error) {
         console.log(error);
     });
@@ -220,4 +227,36 @@ function bookTheseFlights(passengers) {
 function getCookie(name) {
   const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
   return cookieValue ? cookieValue.pop() : '';
+}
+
+function createBookings(outbound_flights,return_flights,passengers) {
+
+    let booking = {}
+    booking['first_name'] = document.getElementById('primary_name').value;
+    booking['surname'] = document.getElementById('primary_surname').value;
+    booking['email'] = document.getElementById('primary_email').value;
+    booking['outbound'] = outbound_flights
+    booking['return'] = return_flights
+    booking['passengers'] = passengers
+
+    let json_booking = JSON.stringify(booking);
+    const csrftoken = getCookie('csrftoken');
+
+    fetch('/dfairways/create_bookings/', {
+     method: 'POST',
+        headers: {
+            'X-CSRFToken': csrftoken,
+            'content-type': 'application/json'
+        }, body: json_booking,
+    }).then(response => {
+        return response.text();
+    }).then(html => {
+
+        window.location.href = '/dfairways/';
+    }).catch(function (error) {
+        console.log(error);
+    });
+
+
+
 }

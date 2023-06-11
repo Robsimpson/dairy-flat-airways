@@ -12,7 +12,7 @@ from zoneinfo import ZoneInfo
 from datetime import datetime
 
 # Create your views here.
-from .models import Schedule, FlightStatus, Airport, Route, RouteLeg, Flight
+from .models import Schedule, FlightStatus, Airport, Route, RouteLeg, Flight, Ticket, TicketStatus
 
 from .forms import SearchFlightsForm
 
@@ -220,5 +220,33 @@ def book_flights(request):
         'return_flight': return_flight,
         'passengers': working['passengers'],
     }
+
     return render(request, 'your_ticket.html', context)
+
+def create_bookings(request):
+
+    request_body = json.loads(request.body)
+
+    # create the booking
+    for leg in request_body['outbound']:
+
+        ticket = Ticket()
+
+        ticket.first_name = request_body['first_name']
+        ticket.last_name = request_body['surname']
+        ticket.passengers = request_body['passengers']
+        ticket.email = request_body['email']
+
+        ticket.flight_number = leg[0].flight_number
+
+
+
+
+
+        ticket.status = TicketStatus.SCHEDULED
+
+
+
+
+
 
