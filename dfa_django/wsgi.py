@@ -1,5 +1,5 @@
 """
-WSGI config for A2_django project.
+WSGI config for dfa_django project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'A2_django.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dfa_django.settings')
 
 application = get_wsgi_application()
