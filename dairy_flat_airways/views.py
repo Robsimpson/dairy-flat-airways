@@ -26,13 +26,6 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-# ticketing
-
-# my user
-
-# about
-
-
 # ADMIN FUNCTIONS - schedules, creates schedules, updates flight status to simulate the passage of time.
 
 def seed(request):

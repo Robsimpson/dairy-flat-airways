@@ -26,6 +26,14 @@
     background-color: transparent;
 }
 
+a {
+    color: darkblue;
+}
+
+a:visited {
+    color: var(--secondary);
+}
+
 h1,h2,h3,h4,h5,h6 {
     font-family: 'Lobster', cursive;
     font-weight: 400;
@@ -34,12 +42,16 @@ h1,h2,h3,h4,h5,h6 {
 h3 {
     font-size: 2rem;
 }
+h4 {
+    padding-top: 1vw;
+    font-size: 1.5rem;
+}
 
 body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: available;
+    overflow-x:hidden;
     background-color: var(--background);
     align-items: center;
 }
@@ -65,6 +77,23 @@ nav {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    padding: 10px;
+}
+
+nav div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px 10px;
+}
+
+nav div:hover {
+    text-shadow: 1px 1px 3px var(--heading);
+}
+
+nav a {
+    text-decoration: none;
 }
 
 main {
@@ -81,13 +110,17 @@ section {
     justify-content: center;
     align-items: center;
     height: 100%;
+    overflow: hidden;
 
 }
 
 .text-content {
     width: 100%;
-    padding: 10px;
+    padding: 10px 40px;
     display: block;
+    border-top: var(--heading) 7px solid;
+    box-shadow: 0px 0px 25px 3px var(--paragraph) ;
+
 }
 
 .text-content h2 {
