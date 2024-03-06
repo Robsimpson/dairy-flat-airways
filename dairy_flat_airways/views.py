@@ -12,7 +12,7 @@ from zoneinfo import ZoneInfo
 from datetime import datetime
 
 # Create your views here.
-from .models import Schedule, FlightStatus, Airport, Route, RouteLeg, Flight, Ticket, TicketStatus
+from .models import Schedule, FlightStatus, Airport, RouteLeg, Flight, Ticket, TicketStatus, Plane
 
 from .forms import SearchFlightsForm
 
@@ -24,6 +24,17 @@ def index(request):
         'form': search_flights_form
     }
     return render(request, 'index.html', context)
+
+
+def about(request):
+    airports = Airport.objects.all()
+    planes = Plane.objects.all()
+    context = {
+        'airports': airports,
+        'planes': planes
+    }
+
+    return render(request, 'about.html', context)
 
 
 # ADMIN FUNCTIONS - schedules, creates schedules, updates flight status to simulate the passage of time.
@@ -114,7 +125,8 @@ def search_scheduled_flights(request):
                     _departure_date = datetime.fromtimestamp(temp[0].route_details[-1][-1]).astimezone(timezone)
                     scheduled_outbound += temp
                 if _return_departure_date == 0:
-                    _return_departure_date = _departure_date  # this sets the departure date to the date the first optional flight has possibly landed.
+                    _return_departure_date = _departure_date
+                    # this sets the departure date to the date the first optional flight has possibly landed.
 
             scheduled_return = []
             if return_required:
@@ -178,9 +190,9 @@ def trigger_update_flight_status(request):
     return HttpResponse('Flight status updated')
 
 
-def return_unique_list(list):
+def return_unique_list(my_list):
     seen = set()
-    for sublist in list:
+    for sublist in my_list:
         sublist[:] = [item for item in sublist if item not in seen and not seen.add(item)]
 
 
@@ -216,6 +228,7 @@ def book_flights(request):
 
     return render(request, 'your_ticket.html', context)
 
+
 def create_bookings(request):
 
     request_body = json.loads(request.body)
@@ -232,14 +245,4 @@ def create_bookings(request):
 
         ticket.flight_number = leg[0].flight_number
 
-
-
-
-
         ticket.status = TicketStatus.SCHEDULED
-
-
-
-
-
-
