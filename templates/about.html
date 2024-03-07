@@ -4,60 +4,56 @@
 
 {% block content %}
 
-<section>
-    <h2>Dairy Flat Airways</h2>
+<section class="flex-col">
+<h2>About the simulation</h2>
+    <p>
+        The airports and planes viewable below, are all defined in the database.
+    </p>
 </section>
+
 <section class="flex-col">
     <h2>Our Destinations</h2>
-<div class = "flex-wrap">
 
+    <div class = "flex-wrap">
 
-    {%  for airport in airports %}
-    <div class = "airport_card">
-        <div><h3>{{ airport.name }}</h3>
-        <img src="{% static '/dairy_flat_airways/images/' %}{{ airport.id }}.jpg" alt="{{ airport.name }}" />
-        <ul>
-            <li>{{ airport.id }}</li>
-            <li>{{ airport.location }}</li>
-            <li>{{ airport.lat }}, {{ airport.long }}</li>
-        </ul>
-
-        </div>
-        <div><p>{{ airport.description }}</p></div>
+        {%  for airport in airports %}
+            <div class = "card airport_card">
+                <div>
+                    <h3>{{ airport.name }}</h3>
+                    <img src="{% static '/dairy_flat_airways/images/' %}{{ airport.id }}.jpg" alt="{{ airport.name }}" />
+                    <ul>
+                        <li>{{ airport.id }}</li>
+                        <li>{{ airport.location }}</li>
+                        <li>{{ airport.lat }}, {{ airport.long }}</li>
+                    </ul>
+                </div>
+                <div><p>{{ airport.description }}</p></div>
+            </div>
+        {%  endfor %}
     </div>
-    {%  endfor %}
-</div>
 </section>
 
 <section class="flex-col">
    <h2>Our Fleet</h2>
+   <div class ="flex-wrap">
+       {%  for plane in planes %}
 
-<div class ="flex-wrap">
+        <div class = "card plane_card">
+            <div>
+                <h3>{{  plane.tail_number }}</h3>
+                <img src="{% static '/dairy_flat_airways/images/' %}{{ plane.model.model }}.jpg" alt="{{ plane.model.manufacturer }}" />
+            <ul>
+                <li>{{ plane.model.manufacturer }} {{ plane.model.model }}</li>
+                <li>Capacity: {{ plane.model.capacity }}</li>
+                <li>Range: {{ plane.model.range }}knots</li>
+                <li>Max Speed: {{ plane.model.max_speed }}kns</li>
+                <li>Max Altitude: {{ plane.model.max_altitude }}m</li>
+            </ul>
 
-{%  for plane in planes %}
-
-<div class = "airport_card">
-    <div><h3>{{  plane.tail_number }}</h3></div>
-    <img src="{% static '/dairy_flat_airways/images/' %}{{ plane.model.model }}.jpg" alt="{{ plane.model.manufacturer }}" />
-        <ul>
-            <li>{{ airport.id }}</li>
-            <li>{{ airport.location }}</li>
-            <li>{{ airport.lat }}, {{ airport.long }}</li>
-        </ul>
-
+            </div>
         </div>
-        <div><p>{{ airport.description }}</p></div>
-
-</div>
-
-
-
-</div>
-{%  endfor %}
-
+        {%  endfor %}
+    </div>
 </section>
-
-
-
 
 {%  endblock %}
