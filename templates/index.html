@@ -3,74 +3,75 @@
 <!-- index.html -->
 
 {% block content %}
-
- <section class = "carousel-background">
-<div id="index-carousel" class="carousel-container">
-
-    <div id="schedule-box" class="floating-box carousel-card">
-        <span class="material-symbols-outlined carousel-control-left">navigate_before</span>
-            <div class="carousel-card-content">
-                <h3>Upcoming Schedule</h3>
-                <div id="upcoming_schedule_display"></div>
+    
+    <section class = "carousel-background">
+     
+        <div id="index-carousel" class="carousel-container">
+        
+            <div id="schedule-box" class="floating-box carousel-card">
+                <span class="material-symbols-outlined carousel-control-left">navigate_before</span>
+                    <div class="carousel-card-content">
+                        <h3>Upcoming Schedule</h3>
+                        <div id="upcoming_schedule_display"></div>
+                    </div>
+                <span class="material-symbols-outlined carousel-control-right">navigate_next</span>
             </div>
-        <span class="material-symbols-outlined carousel-control-right">navigate_next</span>
-    </div>
-
-
-    <div id="booking-box" class="floating-box carousel-card carousel-default">
-        <span class="material-symbols-outlined carousel-control-left">navigate_before</span>
-        <div class="carousel-card-content">
-            <h3>Find a Flight</h3>
-            <form method="post" action="/dfairways/search_scheduled_flights/"><table>
-                {% csrf_token %}
-                {{  form.as_table }}
-            </table>
-            <button type="submit">Search</button></form>
+        
+        
+            <div id="booking-box" class="floating-box carousel-card carousel-default">
+                <span class="material-symbols-outlined carousel-control-left">navigate_before</span>
+                <div class="carousel-card-content">
+                    <h3>Find a Flight</h3>
+                    <form method="post" action="/dfairways/search_scheduled_flights/"><table>
+                        {% csrf_token %}
+                        {{  form.as_table }}
+                    </table>
+                    <button type="submit">Search</button></form>
+                </div>
+                <span class="material-symbols-outlined carousel-control-right">navigate_next</span>
+            </div>
+        
+        
+             <div id="flight-status-box" class="floating-box carousel-card">
+                 <span class="material-symbols-outlined carousel-control-left">navigate_before</span>
+                 <div class="carousel-card-content">
+                     <h3>Current Aircraft Positions</h3>
+                        <div id="flight-position-map"></div>
+                 </div>
+                 <span class="material-symbols-outlined carousel-control-right">navigate_next</span>
+        
+             </div>
         </div>
-        <span class="material-symbols-outlined carousel-control-right">navigate_next</span>
-    </div>
+    
+    </section>
 
-
-     <div id="flight-status-box" class="floating-box carousel-card">
-         <span class="material-symbols-outlined carousel-control-left">navigate_before</span>
-         <div class="carousel-card-content">
-             <h3>Current Aircraft Positions</h3>
-                <div id="flight-position-map"></div>
-         </div>
-         <span class="material-symbols-outlined carousel-control-right">navigate_next</span>
-
-     </div>
-</div>
-
- </section>
-
-<section class="text-content" id="about-us">
-
-    <h2>About this demonstration</h2>
-    <p>This was a project completed in 2023 for Massey University's Advanced Web Paper (159.352). The paper covers how web servers work, and the concepts behind APIs and frameworks to create dynamic programs.</p>
-    <p><em>Dairy Flat Airways</em> is a fictional airline - based out of the (real) North Shore Aerodrome in Auckland, which is near Massey's albany campus. Several regional airlines have operated out of this airport (which has no control tower), and fly to similar destinations to the fictional airline.
-    The brief was to create a ticketing website where users could find flights, and buy tickets for the scheduled flights.
-    Most written material is generated from ChatGPT, and images are generated using Dall-E. They are supposed to be horrendous! This was not required for the assignment, but where is the fun in bare bones!</p>
-    <h4>Features</h4>
-    <ul>
-        <li>All schedule plans are configurations in the database rather than hardcoded - airports, aircraft, scheduled plans etc can be altered and the simulation reseeded</li>
-        <li>The plans are converted into scheduled flights as part of the simulation to ensure the demonstration always works</li>
-        <li>The flight board is as per simulation</li>
-        <li>The flight tracker tracks the simulated flights and plane positions based on server time</li>
-        <li>A graph traversing model is used to (a version of Dijkstra's algorithm) find all possible itineraries of scheduled flights between an origin and destination that could be purchased for the travelling group</li>
-        <li>User can simulate purchasing tickets</li>
-        <li>Carousel to navigate through the information blocks</li>
-    </ul>
-    <h4>Technologies</h4>
-    <ul>
-        <li><a href="https://www.djangoproject.com/">Django</a></li>
-        <li>HTML/CSS/JS</li>
-        <li><a href="https://www.docker.com/">Docker</a> - containerised image of this running program, which should be what you are using unless you have grabbed source code (which is fine as per license)</li>
-        <li><a href="https://turfjs.org/">Turf.js</a> - Geospatial Analysis Package. Used to draw points and in particular, geodesic lines to represent what a straight line looks like on the projection</li>
-    </ul>
-
-
-</section>
+    <section class="text-content" id="about-us">
+    
+        <h2>About this demonstration</h2>
+        <p>This was a project completed in 2023 for Massey University's Advanced Web Paper (159.352). The paper covers how web servers work, and the concepts behind APIs and frameworks to create dynamic programs.</p>
+        <p><em>Dairy Flat Airways</em> is a fictional airline - based out of the (real) North Shore Aerodrome in Auckland, which is near Massey's albany campus. Several regional airlines have operated out of this airport (which has no control tower), and fly to similar destinations to the fictional airline.
+        The brief was to create a ticketing website where users could find flights, and buy tickets for the scheduled flights.
+        Most written material is generated from ChatGPT, and images are generated using Dall-E. They are supposed to be horrendous! This was not required for the assignment, but where is the fun in bare bones!</p>
+        <h4>Features</h4>
+        <ul>
+            <li>All schedule plans are configurations in the database rather than hardcoded - airports, aircraft, scheduled plans etc can be altered and the simulation reseeded</li>
+            <li>The plans are converted into scheduled flights as part of the simulation to ensure the demonstration always works</li>
+            <li>The flight board is as per simulation</li>
+            <li>The flight tracker tracks the simulated flights and plane positions based on server time</li>
+            <li>A graph traversing model is used to (a version of Dijkstra's algorithm) find all possible itineraries of scheduled flights between an origin and destination that could be purchased for the travelling group</li>
+            <li>User can simulate purchasing tickets</li>
+            <li>Carousel to navigate through the information blocks</li>
+        </ul>
+        <h4>Technologies</h4>
+        <ul>
+            <li><a href="https://www.djangoproject.com/">Django</a></li>
+            <li>HTML/CSS/JS</li>
+            <li><a href="https://www.docker.com/">Docker</a> - containerised image of this running program, which should be what you are using unless you have grabbed source code (which is fine as per license)</li>
+            <li><a href="https://turfjs.org/">Turf.js</a> - Geospatial Analysis Package. Used to draw points and in particular, geodesic lines to represent what a straight line looks like on the projection</li>
+        </ul>
+    
+    
+    </section>
 
 <script src=" {% static 'dairy_flat_airways/scripts/content_updates.js' %}"></script>
 <script src="{%  static 'dairy_flat_airways/scripts/map_control.js' %}"></script>
