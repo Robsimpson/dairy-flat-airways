@@ -1,7 +1,7 @@
 # Dairy Flat Airways
-## Assignment submitted for 159.352, Massey University
+## Assignment submitted for Massey University advanced web design
 
-This was a project completed in 2023 for Massey University's Advanced Web Paper (159.352). The paper covers how web servers work, and the concepts behind APIs and frameworks to create dynamic programs.</p>
+This was a project completed in 2023 for Massey University's Advanced Web Paper. The paper covers how web servers work, and the concepts behind APIs and frameworks to create dynamic programs.</p>
 
 **Dairy Flat Airways** is a fictional airline - based out of the (real) North Shore Aerodrome in Auckland, which is near Massey's albany campus. Several regional airlines have operated out of this airport (which has no control tower), and fly to similar destinations to the fictional airline.
 
